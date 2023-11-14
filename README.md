@@ -15,14 +15,29 @@ WAIT_NAME, WAIT_SURNAME, WAIT_BIRTHDAY = range(3)
 
 
 def ask_name(update: Update, contex: CallbackContext):
-    
+    user_id = update.message.from_user.id
+    username = update.message.from_user.username
+    logger.info(f"{username=} {user_id=} вызвал функцию ask_name")
+    answer = [
+        f"назави свою имя"
+    ]
+    answer = "/n".join(answer)
+    update.message.reply_text(answer)
+
     return WAIT_NAME
 
 
 def get_name(update: Update, context: CallbackContext):
-    
+    user_id = update.message.from_user.id
+    username = update.message.from_user.username
+    logger.info(f"{username=} {user_id=} вызвал функцию пуе_name")
+    answer = [
+        f"имя зарегестрировано"
+    ]
+    answer = "/n".join(answer)
+    update.message.reply_text(answer)
     return ask_surname(update, context)
-
+    
 
 def ask_surname(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
@@ -38,15 +53,38 @@ def ask_surname(update: Update, context: CallbackContext):
 
 
 def get_surname(update: Update, context: CallbackContext):
-    pass
+    user_id = update.message.from_user.id
+    username = update.message.from_user.username
+    logger.info(f"{username=} {user_id=} вызвал функцию get_surname")
+    answer = [
+        f"фамилию зарегестрирована"
+    ]
+    answer = "/n".join(answer)
+    update.message.reply_text(answer)
 
 
 def ask_birthday(update: Update, context: CallbackContext):
-    pass
+    user_id = update.message.from_user.id
+    username = update.message.from_user.username
+    logger.info(f"{username=} {user_id=} вызвал функцию ask_birthday")
+    answer = [
+        f"назави свою дату рождения"
+    ]
+    answer = "/n".join(answer)
+    update.message.reply_text(answer)
+
+    return WAIT_BIRTHDAY
 
 
 def get_birthday(update: Update, context: CallbackContext):
-    pass
+    user_id = update.message.from_user.id
+    username = update.message.from_user.username
+    logger.info(f"{username=} {user_id=} вызвал функцию ask_birthday")
+    answer = [
+        f"дата зарегестрирована"
+    ]
+    answer = "/n".join(answer)
+    update.message.reply_text(answer)
 
 
 def register(update: Update, context: CallbackContext):
