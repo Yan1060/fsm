@@ -1,4 +1,3 @@
-# fsm
 from telegram import Update, ParseMode
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
@@ -8,6 +7,7 @@ from telegram.ext import CallbackContext
 from telegram.ext import Filters
 
 import logging
+TOKEN = "6376650036:AAHf858D7GreG8iQAanhR-Ypqmt_aZVt1k0"
 
 logger = logging.getLogger(__name__)
 
@@ -30,14 +30,15 @@ def ask_name(update: Update, contex: CallbackContext):
 def get_name(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
     username = update.message.from_user.username
+    text = update.massage.text
     logger.info(f"{username=} {user_id=} вызвал функцию пуе_name")
     answer = [
-        f"имя зарегестрировано"
+        f"Твоя имя - {text}"
     ]
     answer = "/n".join(answer)
     update.message.reply_text(answer)
     return ask_surname(update, context)
-    
+
 
 def ask_surname(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
@@ -55,9 +56,10 @@ def ask_surname(update: Update, context: CallbackContext):
 def get_surname(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
     username = update.message.from_user.username
+    text = update.massage.text
     logger.info(f"{username=} {user_id=} вызвал функцию get_surname")
     answer = [
-        f"фамилию зарегестрирована"
+        f"Твоя фамилия - {text}"
     ]
     answer = "/n".join(answer)
     update.message.reply_text(answer)
@@ -79,9 +81,10 @@ def ask_birthday(update: Update, context: CallbackContext):
 def get_birthday(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
     username = update.message.from_user.username
+    text = update.massage.text
     logger.info(f"{username=} {user_id=} вызвал функцию ask_birthday")
     answer = [
-        f"дата зарегестрирована"
+        f"Твоя дата рождения - {text}"
     ]
     answer = "/n".join(answer)
     update.message.reply_text(answer)
