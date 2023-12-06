@@ -11,7 +11,13 @@ TOKEN = "6376650036:AAHf858D7GreG8iQAanhR-Ypqmt_aZVt1k0"
 
 logger = logging.getLogger(__name__)
 
-WAIT_NAME, WAIT_SURNAME, WAIT_BIRTHDAY = range(3)
+WAIT_NAME, WAIT_SURNAME, WAIT_BIRTHDAY, WAIT_POBATUSHKE = range(3)
+
+def check_register(update: Update, contex: CallbackContext):
+    user_id = update.message.from_user.id
+    username = update.message.from_user.username
+    logger.info(f"{username=} {user_id=} вызвал функцию check_register")
+    
 
 
 def ask_name(update: Update, contex: CallbackContext):
@@ -31,7 +37,7 @@ def get_name(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
     username = update.message.from_user.username
     text = update.massage.text
-    logger.info(f"{username=} {user_id=} вызвал функцию пуе_name")
+    logger.info(f"{username=} {user_id=} вызвал функцию get_name")
     answer = [
         f"Твоя имя - {text}"
     ]
@@ -88,6 +94,31 @@ def get_birthday(update: Update, context: CallbackContext):
     ]
     answer = "/n".join(answer)
     update.message.reply_text(answer)
+
+def ask_pobatushke(update: Update, context: CallbackContext):
+    user_id = update.message.from_user.id
+    username = update.message.from_user.username
+    logger.info(f"{username=} {user_id=} вызвал функцию ask_pobatushke")
+    answer = [
+        f"назави своё отчество"
+    ]
+    answer = "/n".join(answer)
+    update.message.reply_text(answer)
+
+    return WAIT_POBATUSHKE
+
+
+def get_pobatushke(update: Update, context: CallbackContext):
+    user_id = update.message.from_user.id
+    username = update.message.from_user.username
+    text = update.massage.text
+    logger.info(f"{username=} {user_id=} вызвал функцию ask_pobatushke")
+    answer = [
+        f"Твоё отчество - {text}"
+    ]
+    answer = "/n".join(answer)
+    update.message.reply_text(answer)
+
 
 
 def register(update: Update, context: CallbackContext):
